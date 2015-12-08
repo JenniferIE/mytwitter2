@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
       validates :password_confirmation, presence: true
       has_secure_password 
     
+      has_many :comments, dependent: :destroy
       # Returns the hash digest of a string.
       def User.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -35,5 +36,7 @@ class User < ActiveRecord::Base
        def forget
           update_attribute(:remember_digest, nil)
        end
-
+       def feed
+          Comment.where("user_id = ?", id)
+       end
 end

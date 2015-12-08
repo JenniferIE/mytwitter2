@@ -4,7 +4,7 @@
           get 'sessions/new'
           resources :genres
           resources :authors
-
+          resources :comments, only: [:create, :destroy]
           resources :books, only: [:index, :new, :create, :show, :destroy]
           resources :users
           root 'static_pages#home'
