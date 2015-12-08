@@ -22,3 +22,4 @@ gem 'rails',        '4.2.2'
     end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 gem 'bootstrap-sass',       '3.2.0.0'
+gem 'bcrypt',   '3.1.7'
