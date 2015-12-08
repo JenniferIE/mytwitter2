@@ -1,15 +1,15 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
-	def index
-		@books = Book.all 
-	end
+  def index
+    @books = Book.all 
+  end
 
-	def new
-		@book = Book.new
-		@genres = Genre.all
-	end
+  def new
+    @book = Book.new
+    @genres = Genre.all
+  end
 
-	def create
+  def create
       @book = Book.new(book_params)
 
       respond_to do |format|
@@ -21,20 +21,22 @@ class BooksController < ApplicationController
           format.json { render json: @book.errors, status: :unprocessable_entity }
         end
     end
-	end
+  end
 
-	def show
-		@book = Book.find(params[:id])
-		@contents = @book.contents 
-	end
+  def show
+    @book = Book.find(params[:id])
+    # respond_to do |format|
+    #   format.html
+    # end
+  end
 
-	def destroy
-		@book = Book.find(params[:id])
-		@book.destroy
-		flash[:notice] = "You have successfully delete a book."
-		redirect_to books_url
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+    flash[:notice] = "You have successfully delete a book."
+    redirect_to books_url
         
-	end
+  end
 
  private
 
@@ -43,6 +45,6 @@ class BooksController < ApplicationController
     end
 
     def book_params
-    	params.require(:book).permit(:title, :author, :isbn, :year, :genre_id)
+      params.require(:book).permit(:title, :author, :isbn, :year, :genre_id)
     end
 end

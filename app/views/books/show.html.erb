@@ -6,11 +6,4 @@
 <p>Author: <%= @book.author %></p>
 <p>ISBN: <%= @book.isbn %></p>
 <p>Year: <%= @book.year %></p>
-     <div class="col-md-8">
-        <% if @book.contents.any? %>
-          <h3>Contents (<%= @book.contents.count %>)</h3>
-          <ol class="contents">
-            <%= render @contents %>
-          </ol>
-        <% end %>
-      </div>
+<p>Genre: <%= @book.genre.name %></p>

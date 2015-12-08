@@ -1,30 +1,27 @@
-
 <h1>New Book</h1>
 
 <p><%= link_to "Back to list of books", books_path %></p>
-
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
 <%= form_for (@book) do |f|%>
-  <% if @book.errors.any? %>
-    <div id="error_explanation">
-    	<h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved;</h2>
+        <%= render 'shared/error_messages', object: f.object %>
+          <%= f.label :title %>
+          <%= f.text_field :title %>
 
-    	<ul>
-    		<% @book.errors.full_messages.each do |msg| %>
-    		  <li><%= msg %></li>
-    		<% end %>
-    	</ul>
-    </div>
-  <% end %>
-  
-  Title: <%= f.text_field :title %><br />
-  Author: <%= f.text_field :author %><br />
-  Isbn: <%= f.text_field :isbn %><br />
-  Year: <%= f.text_field :year %><br />
-  Genre: <%= f.select(:genre_id) do %>
-  <% @genres.each do |g| -%>
-    <%= content_tag(:option, g.name, value: g.id) %>
-    <% end %>
-  <% end %>
+          <%= f.label :author %>
+          <%= f.text_field :author %>
 
-  <%= f.submit %>
+          <%= f.label :isbn %>
+          <%= f.text_field :isbn %>
+
+          <%= f.label :year %>
+          <%= f.text_field :year %>
+
+         <%= f.label :genre %>
+        <%= f.collection_radio_buttons(:genre_id, Genre.all.order(:name), :id, :name, {}, {:class => "bar"} ) %>
+
+  <br><br>
+  <%= f.submit "Create new book", class: "btn btn-large btn-primary"%>
 <% end %>
+  </div>
+</div>
