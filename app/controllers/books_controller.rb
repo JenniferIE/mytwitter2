@@ -25,9 +25,7 @@ class BooksController < ApplicationController
 
 	def show
 		@book = Book.find(params[:id])
-		# respond_to do |format|
-		#   format.html
-		# end
+		@contents = @book.contents 
 	end
 
 	def destroy
@@ -47,6 +45,4 @@ class BooksController < ApplicationController
     def book_params
     	params.require(:book).permit(:title, :author, :isbn, :year, :genre_id)
     end
-end
-
 end

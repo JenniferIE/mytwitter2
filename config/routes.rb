@@ -3,6 +3,7 @@
 
           get 'sessions/new'
           resources :genres
+          resources :authors
 
           resources :books, only: [:index, :new, :create, :show, :destroy]
           resources :users

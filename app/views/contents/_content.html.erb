@@ -1,0 +1,8 @@
+    <li id="content-<%= content.id %>">
+    
+      <span class="book"><%= link_to content.book.title, content.book %></span>
+      <span class="content"><%= content.content %></span>
+      <span class="timestamp">
+        Posted <%= time_ago_in_words(content.created_at) %> ago.
+      </span>
+    </li>
