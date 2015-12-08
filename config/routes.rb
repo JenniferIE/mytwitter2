@@ -1,9 +1,10 @@
     Rails.application.routes.draw do
-  get 'books/new'
+  
 
-  get 'sessions/new'
+          get 'sessions/new'
+          resources :genres
 
- # get 'users/new'
+          resources :books, only: [:index, :new, :create, :show, :destroy]
           resources :users
           root 'static_pages#home'
 

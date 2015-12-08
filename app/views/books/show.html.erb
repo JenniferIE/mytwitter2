@@ -1,0 +1,10 @@
+<h1>Book: <%= @book.title %></h1>
+
+<p><%= link_to "Back to list of books", books_path %></p>
+
+<p>Title: <%= @book.title %></p>
+<p>Author: <%= @book.author %></p>
+<p>ISBN: <%= @book.isbn %></p>
+<p>Year: <%= @book.year %></p>
+<p>Genre: <%= @book.genre.name %></p>
+

@@ -1,3 +1,33 @@
-<% provide(:title, 'New Book') %>
 <h1>New Book</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    
+<h1>New Book</h1>
+
+<p><%= link_to "Back to list of books", books_path %></p>
+
+<%= form_for (@book) do |f|%>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+    	<h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved;</h2>
+
+    	<ul>
+    		<% @book.errors.full_messages.each do |msg| %>
+    		  <li><%= msg %></li>
+    		<% end %>
+    	</ul>
+    </div>
+  <% end %>
+  
+  Title: <%= f.text_field :title %><br />
+  Author: <%= f.text_field :author %><br />
+  Isbn: <%= f.text_field :isbn %><br />
+  Year: <%= f.text_field :year %><br />
+  Genre: <%= f.select(:genre_id) do %>
+  <% @genres.each do |g| -%>
+    <%= content_tag(:option, g.name, value: g.id) %>
+    <% end %>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
